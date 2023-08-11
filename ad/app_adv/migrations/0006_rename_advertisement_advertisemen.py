@@ -4,7 +4,6 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('app_adv', '0005_alter_advertisement_table'),
     ]

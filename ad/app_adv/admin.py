@@ -33,4 +33,5 @@ class AdvertisementAdmin(admin.ModelAdmin):
             obj.auction = not obj.auction
             obj.save()
 
+
 admin.site.register(Advertisement, AdvertisementAdmin)

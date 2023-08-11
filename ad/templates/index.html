@@ -100,7 +100,8 @@
             <div class="row g-0">
                 <div class="col-md-4">
                     <a class="nav-link" href="advertisement.html">
-                        <img alt="Card title" class="img-fluid rounded-start" src="{% if adv.image %} {{ adv.image.url }} {% else %} {% static 'img/adv.png' %} {% endif %}">
+                        <img alt="Card title" class="img-fluid rounded-start"
+                             src="{% if adv.image %} {{ adv.image.url }} {% else %} {% static 'img/adv.png' %} {% endif %}">
                     </a>
                 </div>
                 <div class="col-md-8">
@@ -115,7 +116,8 @@
                             <span>Продавец: {{ adv.user }}</span>
                             <p class="card-text"><small class="text-muted">Размещено: {{ adv.created_date }}</small>
                             </p>
-                            <p class="card-text"><small class="text-muted">Дата последнего обновления: {{ adv.updated_date }}</small>
+                            <p class="card-text"><small class="text-muted">Дата последнего обновления: {{
+                                adv.updated_date }}</small>
                             </p>
                             <span>Цена: {{ adv.prc }}</span>
                         </a>
@@ -124,7 +126,7 @@
             </div>
         </div>
     </div>
-{% endfor %}
+    {% endfor %}
 </div>
 
 <footer class="bg-primary" style="padding: 100px;">
@@ -143,7 +145,8 @@
                     <a class="nav-link" href="#">что</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
+                    <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle"
+                       data-bs-toggle="dropdown"
                        href="#"
                        id="dropdownId">хотите</a>
                     <div aria-labelledby="dropdownId" class="dropdown-menu">

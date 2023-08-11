@@ -1,17 +1,16 @@
+from django.contrib import admin
+from django.contrib.auth import get_user_model
 from django.db import models
 from django.utils.html import format_html
-from django.contrib import admin
-from django.db import models
-from django.contrib.auth import get_user_model
 
+User = get_user_model()
 
-
-User=get_user_model()
 
 class Advertisement(models.Model):
     title = models.CharField('Заголовок', max_length=256)
     description = models.TextField('Описание', blank=True, null=True, help_text='Не обязательно')
-    price = models.DecimalField('Цена', max_digits=100, decimal_places=2, help_text='Не обязательно', blank=True, null=True)
+    price = models.DecimalField('Цена', max_digits=100, decimal_places=2, help_text='Не обязательно', blank=True,
+                                null=True)
     auction = models.BooleanField('Торг', help_text='Отметьте если торг уместен')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -45,17 +44,16 @@ class Advertisement(models.Model):
         else:
             return format_html('<span style="color: #b30500; font-weight: bold;">Нет изображения</span>')
 
+    @admin.display(description='Цена')
     def prc(self):
         if self.price == None:
             return format_html(
                 '<span style="color: #b9b9b9; font-weight: bold;">Цена не указана</span>')
         else:
-            return format_html('<span style="color: #000000; font-weight: bold;">{}</span>', self.price)
+            return format_html('<span font-weight: bold;">{}</span>', self.price)
 
     def __str__(self):
         return f'Advertisement(id={self.id}), title={self.title}, price={self.price}'
 
     class Meta:
         db_table = 'advertisement'
-
-

@@ -1,5 +1,7 @@
 from django.shortcuts import render
+
 from .models import Advertisement
+
 
 # Create your views here.
 def advertisement(reqest):
@@ -11,8 +13,8 @@ def advertisement_post(reqest):
 
 
 def index(reqest):
-    advertisements=Advertisement.objects.all()
-    context={'advertisements': advertisements}
+    advertisements = Advertisement.objects.all()
+    context = {'advertisements': advertisements}
     return render(reqest, 'index.html', context)
 
 
