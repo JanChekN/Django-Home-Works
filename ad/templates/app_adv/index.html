@@ -8,12 +8,12 @@
 
 <ul class="nav nav-pills sticky-top bg-white nav-fill">
     <li class="nav-item">
-        <a aria-current="page" class="nav-link active" href="{% url 'main-page' %}">
+        <a aria-current="page" class="nav-link active" href="{% url 'main_page' %}">
             <span style="font-weight: bold;">Главная</span>
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="{% url 'top-sellers' %}"><span style="font-weight: bold;">Топ продавцов</span>
+        <a class="nav-link" href="{% url 'top_sellers' %}"><span style="font-weight: bold;">Топ продавцов</span>
         </a>
     </li>
     <li class="nav-item">
@@ -37,7 +37,7 @@
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="{% url 'logout' %}">
             <span style="font-weight: bold;">Выйти</span>
         </a>
     </li>
@@ -85,9 +85,9 @@
                 <a aria-disabled="true" class="nav-link disabled" href="#" tabindex="-1">Еще что-нибудь</a>
             </li>
         </ul>
-        <form class="row g-3">
+        <form class="row g-3" method="get">
             <div class="col-auto w-50">
-                <input class="form-control" type="text">
+                <input name="query" value="{% if title %} {{ title }} {% endif %}" class="form-control" type="text">
             </div>
             <div class="col-auto">
                 <button class="btn btn-success mb-3" type="submit">Найти</button>
@@ -99,7 +99,7 @@
         <div class="card mb-2" style="max-width: 1200px; margin-top: 20px;">
             <div class="row g-0">
                 <div class="col-md-4">
-                    <a class="nav-link" href="advertisement.html">
+                    <a class="nav-link" href="{{ adv.get_absolute_url }}">
                         <img alt="Card title" class="img-fluid rounded-start"
                              src="{% if adv.image %} {{ adv.image.url }} {% else %} {% static 'img/adv.png' %} {% endif %}">
                     </a>
@@ -107,9 +107,9 @@
                 <div class="col-md-8">
                     <div class="card-body">
                         <h5 class="card-title">
-                            <a class="nav-link" href="advertisement.html"><strong>{{ adv.title }}</strong></a>
+                            <a class="nav-link" href="{{ adv.get_absolute_url }}"><strong>{{ adv.title }}</strong></a>
                         </h5>
-                        <a class="nav-link" href="advertisement.html">
+                        <a class="nav-link" href="{{ adv.get_absolute_url }}">
                             <p class="card-text">
                                 {{ adv.description }}
                             </p>
